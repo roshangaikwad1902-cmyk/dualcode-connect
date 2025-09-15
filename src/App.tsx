@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import SearchCodes from "./pages/SearchCodes";
 import TranslateCodes from "./pages/TranslateCodes";
+import ABHAConsent from "./pages/ABHAConsent";
 import UploadEncounter from "./pages/UploadEncounter";
 import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/" element={<Dashboard />} />
             <Route path="/search" element={<SearchCodes />} />
             <Route path="/translate" element={<TranslateCodes />} />
+            <Route path="/abha" element={<ABHAConsent />} />
             <Route path="/upload" element={<UploadEncounter />} />
             <Route path="/analytics" element={<Analytics />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

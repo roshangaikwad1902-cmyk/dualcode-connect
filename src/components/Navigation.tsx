@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Card } from "@/components/ui/card";
-import { Activity, Search, ArrowRightLeft, Upload, BarChart3 } from "lucide-react";
+import { Activity, Search, ArrowRightLeft, Upload, BarChart3, Shield } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
@@ -9,6 +9,7 @@ const Navigation = () => {
     { to: "/", icon: Activity, label: "Dashboard", description: "Overview & Menu" },
     { to: "/search", icon: Search, label: "Search Codes", description: "NAMASTE & ICD-11" },
     { to: "/translate", icon: ArrowRightLeft, label: "Translate", description: "Code Mapping" },
+    { to: "/abha", icon: Shield, label: "ABHA", description: "Consent Management" },
     { to: "/upload", icon: Upload, label: "Upload", description: "EMR Integration" },
     { to: "/analytics", icon: BarChart3, label: "Analytics", description: "Mapping Insights" },
   ];

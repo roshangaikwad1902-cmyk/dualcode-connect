@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,8 +6,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, CheckCircle2, Database } from "lucide-react";
+import { Upload, CheckCircle2, Database, Shield, AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const UploadEncounter = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +20,14 @@ const UploadEncounter = () => {
     notes: ""
   });
   const [isUploaded, setIsUploaded] = useState(false);
+  const [consentStatus, setConsentStatus] = useState<boolean | null>(null);
   const { toast } = useToast();
+
+  // Check ABHA consent status on component mount
+  useEffect(() => {
+    const savedConsent = localStorage.getItem("abhaConsent");
+    setConsentStatus(savedConsent === "true");
+  }, []);
 
   // Dummy code pairs for selection
   const codePairs = [
@@ -55,6 +64,16 @@ const UploadEncounter = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    // Check consent status before upload
+    if (consentStatus !== true) {
+      toast({
+        title: "Upload Blocked",
+        description: "Consent required. Please configure ABHA consent first.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     // Simulate upload
     setIsUploaded(true);
     toast({
@@ -86,6 +105,22 @@ const UploadEncounter = () => {
           Store patient encounters with dual NAMASTE and ICD-11 coding for EMR integration
         </p>
       </div>
+
+      {/* ABHA Consent Warning */}
+      {consentStatus === false && (
+        <Alert className="border-destructive bg-destructive/10">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertDescription className="flex items-center justify-between">
+            <span>Upload blocked. Consent required.</span>
+            <Link to="/abha">
+              <Button size="sm" variant="outline">
+                <Shield className="w-4 h-4 mr-2" />
+                Configure ABHA Consent
+              </Button>
+            </Link>
+          </AlertDescription>
+        </Alert>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Upload Form */}
@@ -176,10 +211,21 @@ const UploadEncounter = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-gradient-primary hover:shadow-hover transition-all duration-300"
-                    disabled={!isFormValid}
+                    disabled={!isFormValid || consentStatus !== true}
                   >
-                    Upload to EMR System
+                    {consentStatus !== true ? "Consent Required" : "Upload to EMR System"}
                   </Button>
+                  
+                  {consentStatus !== true && (
+                    <div className="text-center">
+                      <Link to="/abha">
+                        <Button variant="outline" size="sm">
+                          <Shield className="w-4 h-4 mr-2" />
+                          Configure ABHA Consent
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </form>
               ) : (
                 <div className="text-center space-y-6 py-8">
