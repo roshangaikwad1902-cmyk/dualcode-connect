@@ -23,8 +23,8 @@ const Navigation = () => {
               <Activity className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-primary">AYUSH-ICD11</h1>
-              <p className="text-xs text-muted-foreground">Dual Coding System</p>
+              <h1 className="text-xl font-bold text-primary">SwasthyaSetu</h1>
+              <p className="text-xs text-muted-foreground">Medical Bridge</p>
             </div>
           </div>
           

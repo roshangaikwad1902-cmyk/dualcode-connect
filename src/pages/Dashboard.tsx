@@ -2,33 +2,34 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Search, ArrowRightLeft, Upload, BarChart3, Stethoscope, Globe } from "lucide-react";
+import heroImage from "@/assets/doctor-hero.jpg";
 
 const Dashboard = () => {
   const menuItems = [
     {
       title: "Search Codes",
-      description: "Search AYUSH NAMASTE and ICD-11 terminology with autocomplete",
+      description: "Find medical codes instantly",
       icon: Search,
       link: "/search",
       color: "bg-gradient-primary"
     },
     {
-      title: "Translate Codes",
-      description: "Map NAMASTE codes to ICD-11 with confidence scoring",
+      title: "Translate Codes", 
+      description: "Convert between code systems",
       icon: ArrowRightLeft,
       link: "/translate",
       color: "bg-gradient-secondary"
     },
     {
       title: "Upload Encounter",
-      description: "Store patient encounters with dual coding system",
+      description: "Save patient records",
       icon: Upload,
       link: "/upload",
       color: "bg-gradient-primary"
     },
     {
-      title: "Analytics Dashboard",
-      description: "View mapping gaps and system performance metrics",
+      title: "Analytics",
+      description: "View insights & trends",
       icon: BarChart3,
       link: "/analytics",
       color: "bg-gradient-secondary"
@@ -36,23 +37,29 @@ const Dashboard = () => {
   ];
 
   const stats = [
-    { label: "NAMASTE Codes", value: "1,247", icon: Stethoscope },
-    { label: "ICD-11 Mappings", value: "956", icon: Globe },
-    { label: "Mapping Accuracy", value: "92%", icon: ArrowRightLeft },
-    { label: "Active Encounters", value: "234", icon: Upload }
+    { label: "AYUSH Codes", value: "1,247", icon: Stethoscope },
+    { label: "ICD Mappings", value: "956", icon: Globe },
+    { label: "Accuracy", value: "92%", icon: ArrowRightLeft },
+    { label: "Records", value: "234", icon: Upload }
   ];
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
-      {/* Header */}
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-          Dual-Coding Terminology System
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Bridging AYUSH NAMASTE traditional medicine codes with ICD-11 international standards 
-          for seamless healthcare interoperability
-        </p>
+      {/* Hero Section */}
+      <div className="relative bg-gradient-hero rounded-2xl p-8 text-center overflow-hidden">
+        <div className="relative z-10 space-y-4">
+          <h1 className="text-4xl font-bold text-white">SwasthyaSetu</h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            Bridge traditional AYUSH and modern ICD-11 codes
+          </p>
+        </div>
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-20">
+          <img 
+            src={heroImage} 
+            alt="Medical Professional" 
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -118,10 +125,9 @@ const Dashboard = () => {
               <span className="text-accent-foreground font-bold text-sm">!</span>
             </div>
             <div>
-              <h3 className="font-semibold text-accent-foreground">Prototype Demo</h3>
+              <h3 className="font-semibold text-accent-foreground">Demo Prototype</h3>
               <p className="text-sm text-muted-foreground">
-                This is a demonstration prototype with dummy data for showcasing dual-coding capabilities. 
-                All outputs are simulated for evaluation purposes.
+                Hackathon demo with simulated data
               </p>
             </div>
           </div>

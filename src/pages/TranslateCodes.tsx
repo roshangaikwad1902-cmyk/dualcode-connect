@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { ArrowRightLeft, CheckCircle, AlertCircle } from "lucide-react";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { ArrowRightLeft, CheckCircle, AlertCircle, ChevronsUpDown, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const TranslateCodes = () => {
   const [selectedCode, setSelectedCode] = useState("");
   const [translation, setTranslation] = useState(null);
+  const [open, setOpen] = useState(false);
 
   // Dummy NAMASTE codes
   const namasteCodes = [
@@ -82,7 +85,7 @@ const TranslateCodes = () => {
       <div className="text-center space-y-4">
         <h1 className="text-3xl font-bold text-primary">Code Translation</h1>
         <p className="text-muted-foreground">
-          Translate AYUSH NAMASTE codes to ICD-11 equivalents with confidence scoring
+          Translate AYUSH codes to ICD-11 with confidence scores
         </p>
       </div>
 
@@ -94,39 +97,72 @@ const TranslateCodes = () => {
             <span>Code Translation Engine</span>
           </CardTitle>
           <CardDescription>
-            Select a NAMASTE code to view its ICD-11 mapping with confidence metrics
+            Select AYUSH code for ICD-11 mapping
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
             <div className="space-y-2">
-              <label className="text-sm font-medium">NAMASTE Code</label>
-              <Select value={selectedCode} onValueChange={setSelectedCode}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select NAMASTE code" />
-                </SelectTrigger>
-                <SelectContent>
-                  {namasteCodes.map((code) => (
-                    <SelectItem key={code.code} value={code.code}>
-                      {code.code} - {code.term}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <label className="text-sm font-medium">AYUSH Code</label>
+              <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    aria-expanded={open}
+                    className="w-full justify-between"
+                  >
+                    {selectedCode
+                      ? namasteCodes.find((code) => code.code === selectedCode)?.term
+                      : "Select code..."}
+                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full p-0">
+                  <Command>
+                    <CommandInput placeholder="Search codes..." className="h-9" />
+                    <CommandEmpty>No codes found.</CommandEmpty>
+                    <CommandGroup>
+                      <CommandList>
+                        {namasteCodes.map((code) => (
+                          <CommandItem
+                            key={code.code}
+                            value={code.code}
+                            onSelect={(currentValue) => {
+                              setSelectedCode(currentValue === selectedCode ? "" : currentValue);
+                              setOpen(false);
+                            }}
+                          >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                selectedCode === code.code ? "opacity-100" : "opacity-0"
+                              )}
+                            />
+                            {code.code} - {code.term}
+                          </CommandItem>
+                        ))}
+                      </CommandList>
+                    </CommandGroup>
+                  </Command>
+                </PopoverContent>
+              </Popover>
             </div>
             
             <div className="flex items-center justify-center">
               <ArrowRightLeft className="w-8 h-8 text-muted-foreground" />
             </div>
             
-            <Button 
-              onClick={handleTranslate} 
-              disabled={!selectedCode}
-              className="bg-gradient-primary hover:shadow-hover transition-all duration-300"
-            >
-              Translate Code
-            </Button>
-          </div>
+            <div>
+              <Button 
+                onClick={handleTranslate} 
+                disabled={!selectedCode}
+                 className="bg-gradient-primary hover:shadow-hover transition-all duration-300"
+               >
+                 Translate
+               </Button>
+             </div>
+           </div>
         </CardContent>
       </Card>
 
@@ -144,7 +180,7 @@ const TranslateCodes = () => {
               {/* Source Code */}
               <div className="space-y-3">
                 <h3 className="font-semibold text-secondary flex items-center space-x-2">
-                  <span>Source (NAMASTE)</span>
+                  <span>Source (AYUSH)</span>
                 </h3>
                 <div className="p-4 bg-secondary/10 rounded-lg">
                   <Badge variant="secondary" className="mb-2">{selectedCode}</Badge>
@@ -206,11 +242,11 @@ const TranslateCodes = () => {
       {/* Demo Example */}
       <Card className="bg-accent/10 border-accent">
         <CardHeader>
-          <CardTitle className="text-accent-foreground">Demo Example Output</CardTitle>
+          <CardTitle className="text-accent-foreground">Demo Output</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            <div className="font-medium">Translation Example:</div>
+            <div className="font-medium">Example:</div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
                 <div className="font-medium text-secondary">Input:</div>

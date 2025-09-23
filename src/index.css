@@ -2,31 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Medical Healthcare Design System - AYUSH + ICD-11 Prototype 
-All colors MUST be HSL.
-*/
+/* SwasthyaSetu - Custom Medical Design System */
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 212 20% 15%;
+    --background: 220 30% 96%;
+    --foreground: 220 20% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 212 20% 15%;
+    --card-foreground: 220 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 212 20% 15%;
+    --popover-foreground: 220 15% 20%;
 
-    /* Medical blue primary palette */
-    --primary: 207 90% 45%;
+    /* Custom medical palette - Deep ocean blue */
+    --primary: 210 85% 48%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 207 90% 85%;
-    --primary-dark: 207 90% 35%;
+    --primary-light: 210 60% 75%;
+    --primary-dark: 210 90% 35%;
 
-    /* Healthcare secondary palette */
-    --secondary: 160 60% 45%;
+    /* Emerald green for health */
+    --secondary: 155 70% 42%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 160 60% 85%;
+    --secondary-light: 155 45% 75%;
 
     /* Professional muted tones */
     --muted: 210 20% 96%;
@@ -44,10 +42,11 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    /* Medical gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary-light)) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 25% 98%) 100%);
+    /* SwasthyaSetu gradients */
+    --gradient-primary: linear-gradient(120deg, hsl(var(--primary)) 0%, hsl(210 90% 35%) 100%);
+    --gradient-secondary: linear-gradient(120deg, hsl(var(--secondary)) 0%, hsl(155 80% 30%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 20% 97%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 85% 48%) 0%, hsl(155 70% 42%) 100%);
     
     /* Medical shadows */
     --shadow-medical: 0 4px 20px -2px hsl(var(--primary) / 0.1);

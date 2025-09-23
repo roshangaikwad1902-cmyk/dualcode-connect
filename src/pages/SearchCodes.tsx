@@ -32,7 +32,7 @@ const SearchCodes = () => {
       <div className="text-center space-y-4">
         <h1 className="text-3xl font-bold text-primary">Search Medical Codes</h1>
         <p className="text-muted-foreground">
-          Search across AYUSH NAMASTE and ICD-11 terminology databases with intelligent autocomplete
+          Search AYUSH & ICD-11 databases
         </p>
       </div>
 
@@ -44,7 +44,7 @@ const SearchCodes = () => {
             <span>Dual Terminology Search</span>
           </CardTitle>
           <CardDescription>
-            Type a medical condition to see matching codes from both systems
+            Type medical conditions for dual results
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
