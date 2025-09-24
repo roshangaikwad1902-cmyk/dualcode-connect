@@ -47,7 +47,7 @@ const Dashboard = () => {
       {/* Hero Section */}
       <div className="relative bg-gradient-hero rounded-2xl p-12 text-center">
         <div className="space-y-6">
-          <h1 className="text-5xl font-bold text-foreground drop-shadow-lg">SwasthyaSetu</h1>
+          <h1 className="text-5xl font-bold text-primary drop-shadow-lg">SwasthyaSetu</h1>
           <p className="text-2xl text-foreground font-medium max-w-3xl mx-auto drop-shadow-md">
             Bridge traditional AYUSH and modern ICD-11 codes
           </p>
