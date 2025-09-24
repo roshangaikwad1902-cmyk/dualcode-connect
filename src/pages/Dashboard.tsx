@@ -2,7 +2,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Search, ArrowRightLeft, Upload, BarChart3, Stethoscope, Globe } from "lucide-react";
-import heroImage from "@/assets/doctor-hero.jpg";
 
 const Dashboard = () => {
   const menuItems = [
@@ -46,19 +45,12 @@ const Dashboard = () => {
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       {/* Hero Section */}
-      <div className="relative bg-gradient-hero rounded-2xl p-8 text-center overflow-hidden">
-        <div className="relative z-10 space-y-4">
-          <h1 className="text-4xl font-bold text-white">SwasthyaSetu</h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+      <div className="relative bg-gradient-hero rounded-2xl p-12 text-center">
+        <div className="space-y-6">
+          <h1 className="text-5xl font-bold text-white drop-shadow-lg">SwasthyaSetu</h1>
+          <p className="text-2xl text-white font-medium max-w-3xl mx-auto drop-shadow-md">
             Bridge traditional AYUSH and modern ICD-11 codes
           </p>
-        </div>
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-20">
-          <img 
-            src={heroImage} 
-            alt="Medical Professional" 
-            className="w-full h-full object-cover object-center"
-          />
         </div>
       </div>
 
