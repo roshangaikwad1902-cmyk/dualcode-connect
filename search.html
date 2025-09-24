@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Codes - SwasthyaSetu</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-bridge medical-icon"></i>
+                <span class="brand-name">SwasthyaSetu</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Search Medical Codes</h1>
+            <p class="page-subtitle">
+                Find AYUSH NAMASTE codes and ICD-11 classifications with intelligent search
+            </p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="form-container">
+            <div class="search-section">
+                <div class="search-header">
+                    <div class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Code Search</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="searchInput" class="form-label">
+                        Search for medical conditions or codes
+                    </label>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="form-input search-input" 
+                        placeholder="Type 'Fever' to see demo results..."
+                        autocomplete="off"
+                    >
+                    <div class="search-help">
+                        <i class="fas fa-info-circle"></i>
+                        Try searching for: Fever, Cough, Breathing, Diarrhea
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div id="searchResults" class="results-container hidden">
+            <h3 class="results-title">Search Results</h3>
+            <div class="results-grid">
+                <!-- NAMASTE Results Column -->
+                <div class="result-column">
+                    <h4>
+                        <i class="fas fa-leaf"></i>
+                        AYUSH NAMASTE Codes
+                    </h4>
+                    <div id="namasteResults">
+                        <!-- Results will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- ICD-11 Results Column -->
+                <div class="result-column">
+                    <h4>
+                        <i class="fas fa-notes-medical"></i>
+                        ICD-11 Codes
+                    </h4>
+                    <div id="icd11Results">
+                        <!-- Results will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Hint -->
+        <div class="demo-hint">
+            <div class="hint-card">
+                <div class="hint-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="hint-content">
+                    <h4>Demo Instructions</h4>
+                    <p>Type "Fever" in the search box to see sample results showing both NAMASTE and ICD-11 codes. This demonstrates the dual-coding search capability.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <style>
+        /* Additional styles for search page */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .search-section {
+            text-align: center;
+        }
+        
+        .search-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .search-header .search-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .search-header h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        
+        .search-input {
+            font-size: 1.125rem;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        
+        .search-help {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+        
+        .search-help i {
+            color: var(--primary-blue);
+        }
+        
+        .results-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .result-column h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 0.75rem;
+        }
+        
+        .code-result {
+            transition: all 0.3s ease;
+        }
+        
+        .code-result:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .code-description {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        
+        .demo-hint {
+            margin-top: 3rem;
+        }
+        
+        .hint-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: linear-gradient(135deg, var(--light-blue), var(--white));
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--primary-blue);
+        }
+        
+        .hint-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-teal);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .hint-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hint-content p {
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .search-header {
+                flex-direction: column;
+            }
+            
+            .hint-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+</html>

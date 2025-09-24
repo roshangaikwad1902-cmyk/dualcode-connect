@@ -1,0 +1,16 @@
+{
+  "name": "swasthya-setu",
+  "version": "1.0.0",
+  "description": "SwasthyaSetu – Dual-Coding Terminology Prototype for AYUSH & ICD-11",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "dev": "live-server --port=3000"
+  },
+  "keywords": ["healthcare", "medical-coding", "ayush", "icd-11", "dual-coding"],
+  "author": "SwasthyaSetu Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

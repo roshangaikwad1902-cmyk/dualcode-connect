@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Encounter - SwasthyaSetu</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-bridge medical-icon"></i>
+                <span class="brand-name">SwasthyaSetu</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Upload Patient Encounter</h1>
+            <p class="page-subtitle">
+                Submit patient encounters with dual coding support for comprehensive medical record management
+            </p>
+        </div>
+
+        <!-- Upload Form -->
+        <div class="form-container">
+            <div class="upload-header">
+                <div class="upload-icon">
+                    <i class="fas fa-upload"></i>
+                </div>
+                <h3>Patient Encounter Form</h3>
+                <p class="upload-description">Fill in the patient details and select appropriate medical codes</p>
+            </div>
+
+            <form id="encounterForm" class="encounter-form">
+                <div class="form-grid">
+                    <!-- Patient Information -->
+                    <div class="form-section">
+                        <h4 class="section-title">
+                            <i class="fas fa-user"></i>
+                            Patient Information
+                        </h4>
+                        
+                        <div class="form-group">
+                            <label for="patientId" class="form-label">Patient ID *</label>
+                            <input 
+                                type="text" 
+                                id="patientId" 
+                                name="patientId" 
+                                class="form-input" 
+                                placeholder="Enter patient ID (e.g., P001)"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patientName" class="form-label">Patient Name</label>
+                            <input 
+                                type="text" 
+                                id="patientName" 
+                                name="patientName" 
+                                class="form-input" 
+                                placeholder="Enter patient name"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="encounterDate" class="form-label">Encounter Date *</label>
+                            <input 
+                                type="date" 
+                                id="encounterDate" 
+                                name="encounterDate" 
+                                class="form-input" 
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Medical Coding -->
+                    <div class="form-section">
+                        <h4 class="section-title">
+                            <i class="fas fa-code"></i>
+                            Medical Coding
+                        </h4>
+                        
+                        <div class="form-group">
+                            <label for="namasteEncounterSelect" class="form-label">NAMASTE Code *</label>
+                            <select id="namasteEncounterSelect" name="namasteCode" class="form-select" required>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="icd11EncounterSelect" class="form-label">ICD-11 Code *</label>
+                            <select id="icd11EncounterSelect" name="icd11Code" class="form-select" required>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="symptoms" class="form-label">Symptoms/Notes</label>
+                            <textarea 
+                                id="symptoms" 
+                                name="symptoms" 
+                                class="form-input form-textarea" 
+                                rows="3"
+                                placeholder="Describe symptoms or add clinical notes"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        Upload Encounter
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Upload Confirmation -->
+        <div id="uploadConfirmation" class="upload-confirmation hidden">
+            <!-- Confirmation will be populated by JavaScript -->
+        </div>
+
+        <!-- EMR Integration Info -->
+        <div class="emr-info">
+            <div class="info-container">
+                <h3 class="info-title">
+                    <i class="fas fa-hospital"></i>
+                    EMR Integration
+                </h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Secure Storage</h4>
+                        <p>All patient data is encrypted and stored securely following HIPAA compliance standards.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h4>Real-time Sync</h4>
+                        <p>Encounter data is synchronized in real-time with your existing EMR systems.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Analytics Ready</h4>
+                        <p>Dual-coded data feeds directly into analytics dashboards for insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <style>
+        /* Additional styles for upload page */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .upload-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .upload-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .upload-header h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-description {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+        }
+        
+        .encounter-form {
+            margin-top: 2rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .form-section {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title i {
+            color: var(--primary-blue);
+        }
+        
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            text-align: center;
+        }
+        
+        .btn-large {
+            padding: 1.25rem 3rem;
+            font-size: 1.125rem;
+        }
+        
+        .upload-confirmation {
+            margin-top: 3rem;
+        }
+        
+        .confirmation-card {
+            background: linear-gradient(135deg, var(--light-blue), var(--white));
+            border: 2px solid var(--accent-teal);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .confirmation-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: var(--accent-teal);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .confirmation-card h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+        
+        .confirmation-details {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-top: 1.5rem;
+        }
+        
+        .confirmation-details p {
+            margin-bottom: 1rem;
+            color: var(--gray-800);
+        }
+        
+        .success-message {
+            color: var(--accent-teal);
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-top: 1rem !important;
+            margin-bottom: 0 !important;
+        }
+        
+        .emr-info {
+            margin-top: 4rem;
+        }
+        
+        .info-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .info-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .info-title i {
+            color: var(--primary-blue);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gray-50);
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+        
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
+        }
+        
+        .info-card p {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .upload-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .upload-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 2rem;
+            }
+            
+            .btn-large {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - SwasthyaSetu</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-bridge medical-icon"></i>
+                <span class="brand-name">SwasthyaSetu</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Analytics Dashboard</h1>
+            <p class="page-subtitle">
+                Track mapping gaps, system performance, and dual coding effectiveness insights
+            </p>
+        </div>
+
+        <!-- Analytics Overview -->
+        <div class="analytics-overview">
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="overview-content">
+                        <div class="overview-number">2,847</div>
+                        <div class="overview-label">Total Code Entries</div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="overview-content">
+                        <div class="overview-number">2,278</div>
+                        <div class="overview-label">Mapped Codes</div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="overview-content">
+                        <div class="overview-number">569</div>
+                        <div class="overview-label">Unmapped Codes</div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="overview-content">
+                        <div class="overview-number">80%</div>
+                        <div class="overview-label">Mapping Success</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Analytics -->
+        <div class="analytics-container">
+            <!-- Mapping Gaps Chart -->
+            <div class="chart-container">
+                <h3 class="chart-title">Mapping Gaps Dashboard</h3>
+                <div id="mappingChart">
+                    <!-- Chart will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Mapping Accuracy</div>
+                    </div>
+                    <div class="stat-card recent-activity-stat">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Recent Encounters</div>
+                    </div>
+                    <div class="stat-card confidence-stat">
+                        <div class="stat-number">87%</div>
+                        <div class="stat-label">Avg Confidence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Analytics -->
+        <div class="detailed-analytics">
+            <div class="analytics-tabs">
+                <button class="tab-button active" onclick="showTab('mapping')">
+                    <i class="fas fa-sitemap"></i>
+                    Mapping Analysis
+                </button>
+                <button class="tab-button" onclick="showTab('trends')">
+                    <i class="fas fa-chart-line"></i>
+                    Trends
+                </button>
+                <button class="tab-button" onclick="showTab('quality')">
+                    <i class="fas fa-award"></i>
+                    Quality Metrics
+                </button>
+            </div>
+
+            <!-- Mapping Analysis Tab -->
+            <div id="mapping-tab" class="tab-content active">
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4>
+                            <i class="fas fa-leaf"></i>
+                            NAMASTE Coverage
+                        </h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                        <div class="progress-text">85% of NAMASTE codes mapped</div>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <h4>
+                            <i class="fas fa-notes-medical"></i>
+                            ICD-11 Coverage
+                        </h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%"></div>
+                        </div>
+                        <div class="progress-text">78% of ICD-11 codes mapped</div>
+                    </div>
+
+                    <div class="analysis-card full-width">
+                        <h4>
+                            <i class="fas fa-table"></i>
+                            Top Unmapped Categories
+                        </h4>
+                        <div class="category-list">
+                            <div class="category-item">
+                                <span class="category-name">Rare Diseases</span>
+                                <span class="category-count">143 unmapped</span>
+                            </div>
+                            <div class="category-item">
+                                <span class="category-name">Specialized Ayurveda</span>
+                                <span class="category-count">98 unmapped</span>
+                            </div>
+                            <div class="category-item">
+                                <span class="category-name">Traditional Formulations</span>
+                                <span class="category-count">76 unmapped</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trends Tab -->
+            <div id="trends-tab" class="tab-content">
+                <div class="trends-grid">
+                    <div class="trend-card">
+                        <h4>Monthly Mapping Progress</h4>
+                        <div class="trend-chart">
+                            <div class="trend-bars">
+                                <div class="trend-bar" style="height: 60%"></div>
+                                <div class="trend-bar" style="height: 70%"></div>
+                                <div class="trend-bar" style="height: 75%"></div>
+                                <div class="trend-bar" style="height: 80%"></div>
+                            </div>
+                            <div class="trend-labels">
+                                <span>Jan</span>
+                                <span>Feb</span>
+                                <span>Mar</span>
+                                <span>Apr</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trend-card">
+                        <h4>System Usage</h4>
+                        <div class="usage-metrics">
+                            <div class="usage-item">
+                                <span class="usage-label">Daily Active Users</span>
+                                <span class="usage-value">247</span>
+                            </div>
+                            <div class="usage-item">
+                                <span class="usage-label">Weekly Searches</span>
+                                <span class="usage-value">1,842</span>
+                            </div>
+                            <div class="usage-item">
+                                <span class="usage-label">Monthly Uploads</span>
+                                <span class="usage-value">459</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Metrics Tab -->
+            <div id="quality-tab" class="tab-content">
+                <div class="quality-grid">
+                    <div class="quality-card">
+                        <h4>Confidence Scores Distribution</h4>
+                        <div class="confidence-ranges">
+                            <div class="confidence-range">
+                                <span class="range-label">90-100%</span>
+                                <div class="range-bar">
+                                    <div class="range-fill" style="width: 45%"></div>
+                                </div>
+                                <span class="range-count">1,025 codes</span>
+                            </div>
+                            <div class="confidence-range">
+                                <span class="range-label">80-89%</span>
+                                <div class="range-bar">
+                                    <div class="range-fill" style="width: 35%"></div>
+                                </div>
+                                <span class="range-count">798 codes</span>
+                            </div>
+                            <div class="confidence-range">
+                                <span class="range-label">70-79%</span>
+                                <div class="range-bar">
+                                    <div class="range-fill" style="width: 20%"></div>
+                                </div>
+                                <span class="range-count">455 codes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+    <style>
+        /* Additional styles for analytics page */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .analytics-overview {
+            margin-bottom: 3rem;
+        }
+        
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .overview-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .overview-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .overview-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .overview-label {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .stats-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .recent-activity-stat {
+            background: linear-gradient(135deg, var(--accent-teal), #0891b2);
+        }
+        
+        .confidence-stat {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .detailed-analytics {
+            margin-top: 3rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+        }
+        
+        .analytics-tabs {
+            display: flex;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 1.5rem;
+            border: none;
+            background: transparent;
+            color: var(--gray-600);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .tab-button:hover {
+            color: var(--primary-blue);
+            background: var(--white);
+        }
+        
+        .tab-button.active {
+            background: var(--white);
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 3rem;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .analysis-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .analysis-card.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .analysis-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+        
+        .analysis-card h4 i {
+            color: var(--primary-blue);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .category-name {
+            font-weight: 500;
+            color: var(--gray-900);
+        }
+        
+        .category-count {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+        
+        .trends-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .trend-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .trend-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+        
+        .trend-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .trend-bars {
+            display: flex;
+            align-items: end;
+            gap: 1rem;
+            height: 150px;
+        }
+        
+        .trend-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--primary-blue), var(--secondary-blue));
+            border-radius: 4px;
+            min-height: 20px;
+        }
+        
+        .trend-labels {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .trend-labels span {
+            flex: 1;
+            text-align: center;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+        
+        .usage-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .usage-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .usage-label {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+        
+        .usage-value {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 1.125rem;
+        }
+        
+        .quality-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .quality-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .quality-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+        
+        .confidence-ranges {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .confidence-range {
+            display: grid;
+            grid-template-columns: 100px 1fr 120px;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .range-label {
+            font-weight: 500;
+            color: var(--gray-900);
+            font-size: 0.875rem;
+        }
+        
+        .range-bar {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .range-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            border-radius: 4px;
+        }
+        
+        .range-count {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            text-align: right;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .analytics-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .analytics-tabs {
+                flex-direction: column;
+            }
+            
+            .confidence-range {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .overview-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tab-content {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        /* CSS Variable for gray-300 used in pie chart */
+        :root {
+            --gray-300: #d1d5db;
+        }
+    </style>
+</body>
+</html>
