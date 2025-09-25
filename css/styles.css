@@ -60,6 +60,68 @@ body {
     color: var(--gray-900);
 }
 
+/* Enhance navbar with app theme */
+.navbar {
+    background: var(--primary-blue);
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    /* Full-bleed across viewport while inside centered container */
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    width: 100vw;
+}
+
+.navbar .nav-brand .medical-icon,
+.navbar .brand-name {
+    color: var(--white);
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+/* Nav links as white buttons */
+.navbar .nav-link {
+    background: var(--white);
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar .nav-link:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Ensure buttons sit at the top-right on wrap */
+@media (max-width: 640px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .navbar .nav-links {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
 /* Hero Section */
 .hero {
     padding: 4rem 0;

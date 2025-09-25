@@ -14,14 +14,16 @@
     <div class="container">
         <!-- Navigation -->
         <nav class="navbar">
-            <div class="nav-brand">
+            <a class="nav-brand" href="index.html" style="text-decoration: none;">
                 <i class="fas fa-bridge medical-icon"></i>
                 <span class="brand-name">SwasthyaSetu</span>
-            </div>
+            </a>
             <div class="nav-links">
-                <a href="dashboard.html" class="nav-link">
-                    <i class="fas fa-arrow-left"></i> Back to Dashboard
-                </a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="search.html" class="nav-link">Search</a>
+                <a href="translate.html" class="nav-link">Translate</a>
+                <a href="upload.html" class="nav-link">Upload</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
             </div>
         </nav>
 
@@ -47,9 +49,19 @@
                     <label for="namasteSelect" class="form-label">
                         Select NAMASTE Code to Translate
                     </label>
-                    <select id="namasteSelect" class="form-select">
-                        <!-- Options will be populated by JavaScript -->
-                    </select>
+                    <div class="autocomplete">
+                        <input 
+                            type="text" 
+                            id="namasteSelect" 
+                            class="form-input search-input" 
+                            placeholder="Type to search NAMASTE code (e.g., Jwara)"
+                            autocomplete="off"
+                            aria-autocomplete="list"
+                            aria-controls="translateSuggestions"
+                            aria-expanded="false"
+                        >
+                        <ul id="translateSuggestions" class="autocomplete-list hidden" role="listbox"></ul>
+                    </div>
                     <div class="form-help">
                         <i class="fas fa-info-circle"></i>
                         Choose a NAMASTE code to see its ICD-11 mapping
@@ -205,6 +217,48 @@
         
         .form-help i {
             color: var(--primary-blue);
+        }
+
+        /* Autocomplete dropdown (same as search page) */
+        .autocomplete {
+            position: relative;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            box-shadow: var(--shadow-md);
+            max-height: 260px;
+            overflow-y: auto;
+            z-index: 20;
+        }
+        .autocomplete-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .autocomplete-item:hover,
+        .autocomplete-item[aria-selected="true"] {
+            background: var(--gray-50);
+        }
+        .autocomplete-item .item-name {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        .autocomplete-item .item-code {
+            font-family: 'Monaco', 'Menlo', monospace;
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            margin-left: auto;
         }
         
         .translation-results {
