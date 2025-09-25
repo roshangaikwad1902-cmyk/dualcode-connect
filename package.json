@@ -7,10 +7,17 @@
     "start": "live-server",
     "dev": "live-server --port=3000"
   },
-  "keywords": ["healthcare", "medical-coding", "ayush", "icd-11", "dual-coding"],
+  "keywords": [
+    "healthcare",
+    "medical-coding",
+    "ayush",
+    "icd-11",
+    "dual-coding"
+  ],
   "author": "SwasthyaSetu Team",
   "license": "MIT",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "vite": "^7.1.7"
   }
 }
